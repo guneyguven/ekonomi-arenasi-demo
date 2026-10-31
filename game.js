@@ -58,7 +58,7 @@
     $("month-number").textContent=String(state.month).padStart(2,"0");$("turn-number").textContent=state.turn;
     $("month-progress").textContent=`${state.monthTurn+1} / 3 tur`;$("month-meter-fill").style.width=((state.monthTurn+1)/3*100)+"%";
     $("event-title").textContent=state.event.title;$("event-description").textContent=state.event.desc;
-    $("event-title").previousElementSibling.textContent=state.event.emoji;
+    document.querySelector(".event-icon").textContent=state.event.emoji;
     $("player-board-count").textContent=`${p.board.length} / 5`;$("enemy-board-count").textContent=`${e.board.length} / 5`;
     $("player-board").innerHTML=boardHTML(p.board,"player");$("enemy-board").innerHTML=boardHTML(e.board,"enemy");
     $("player-hand").innerHTML=p.hand.map((c,i)=>cardHTML(c,i)).join("");
