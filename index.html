@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#171522">
+  <title>Ekonomi Arenası — Kartların konuşsun</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Ekonomi Arenası ana sayfa">
+        <span class="brand-mark">₺</span>
+        <span><strong>EKONOMİ</strong><small>ARENASI</small></span>
+      </a>
+      <div class="top-status"><span class="live-dot"></span> PROTOTİP <span class="version">v0.1</span></div>
+      <button id="new-game" class="quiet-button">↻ Yeni oyun</button>
+    </header>
+
+    <main class="game-layout">
+      <section class="arena">
+        <div class="arena-heading">
+          <div><p class="eyebrow">TURNUVA ALANI · TÜRKİYE</p><h1>Geçim derdi <em>arenası.</em></h1></div>
+          <div class="round-pill">AY <b id="month-number">01</b> <span>·</span> TUR <b id="turn-number">1</b></div>
+        </div>
+
+        <section class="player-zone opponent-zone">
+          <div class="player-label"><div class="avatar opponent-avatar">🏭</div><div><strong>Sermaye Düzeni</strong><small>Bilgisayar rakip</small></div></div>
+          <div class="health-track"><span id="enemy-health-bar"></span></div>
+          <div class="health-number"><b id="enemy-health">30</b><small>REFAH</small></div>
+          <div class="hand-count"><span>▤</span> <b id="enemy-hand-count">5</b><small>kart</small></div>
+        </section>
+
+        <div class="battlefield">
+          <div class="field-caption"><span>RAKİP SAHASI</span><span id="enemy-board-count">0 / 5</span></div>
+          <div id="enemy-board" class="board-row"></div>
+          <div class="center-divider"><span>AY SONU YAKLAŞIYOR</span><i></i><span>EKONOMİK DENGE</span></div>
+          <div id="player-board" class="board-row"></div>
+          <div class="field-caption"><span>SENİN SAHAN</span><span id="player-board-count">0 / 5</span></div>
+        </div>
+
+        <section class="player-zone player-zone-bottom">
+          <div class="player-label"><div class="avatar player-avatar">🧾</div><div><strong>Hane Ekonomisi</strong><small>Sen</small></div></div>
+          <div class="health-track"><span id="player-health-bar"></span></div>
+          <div class="health-number"><b id="player-health">30</b><small>REFAH</small></div>
+          <div class="resource-pill">₺ <b id="budget">1</b><small>/ <span id="max-budget">1</span></small></div>
+        </section>
+
+        <div class="hand-header"><span>ELİNDEKİ KARTLAR</span><small id="hand-hint">Oynamak için bir karta dokun.</small></div>
+        <div id="player-hand" class="hand-row"></div>
+      </section>
+
+      <aside class="side-panel">
+        <div class="panel-card turn-card">
+          <p class="eyebrow">SIRA SENDE</p>
+          <h2 id="turn-title">Hamleni yap.</h2>
+          <p id="turn-description">Kartlarını kullan, sahayı kur ve refahını koru.</p>
+          <button id="end-turn" class="end-turn-button">Turu bitir <span>→</span></button>
+        </div>
+        <div class="panel-card">
+          <div class="panel-title"><span>EKONOMİ GÜNDEMİ</span><span class="pulse">●</span></div>
+          <div class="event-card"><div class="event-icon">📈</div><div><strong id="event-title">Piyasa sakin</strong><p id="event-description">Bu ay olağanüstü bir gelişme yok.</p></div></div>
+          <div class="month-meter"><div><span>Ay sonuna</span><b id="month-progress">1 / 3 tur</b></div><div class="meter-track"><i id="month-meter-fill"></i></div></div>
+        </div>
+        <div class="panel-card log-card">
+          <div class="panel-title">ARENA KAYITLARI <button id="clear-log" aria-label="Kayıtları temizle">×</button></div>
+          <ol id="game-log" class="game-log" aria-live="polite"></ol>
+        </div>
+        <div class="panel-footer">EKONOMİ ARENASI <span>·</span> Tasarım ve oyun fikri: Güven Çalışkan</div>
+      </aside>
+    </main>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <div id="result-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="result-title">
+    <div class="modal-card"><div id="result-emoji" class="result-emoji">🏆</div><p class="eyebrow">ARENA SONUCU</p><h2 id="result-title">Kazandın!</h2><p id="result-text"></p><button id="play-again" class="end-turn-button">Yeniden oyna ↻</button></div>
+  </div>
+  <script src="game.js"></script>
+</body>
+</html>
